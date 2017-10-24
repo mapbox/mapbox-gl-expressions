@@ -58,7 +58,7 @@ class MigrationTool extends React.Component {
                 let klass = '';
                 if (part.added) { klass ='bg-green-faint'; }
                 if (part.removed) { klass='bg-red-faint'; }
-                return <span key={index} className={klass}>{part.value}</span>
+                return <div key={index} className={klass}>{part.value}</div>
             });
             console.log(result);
         } else {
