@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Migration tool for Mapbox GL Expressions</title>
+
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://api.mapbox.com/mapbox-assembly/v0.18.0/assembly.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.18.0/assembly.js"></script>
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="bundle.js"></script>
+
+
+    <header class="prose px12 my12">
+        <h1>
+            Migrating to expressions
+        </h1>
+        <p class="txt-l">
+            Paste a style sheet that uses 'stop' functions to see how you can convert them into <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions">expressions</a>
+        </p>
+    </header>
+    <main id="main"></main>
+
+    <script>
+    ReactDOM.render(
+        React.createElement(MigrationTool, {
+        }, null),
+        document.getElementById('main'));
+    </script>
+</body>
+
+</html>

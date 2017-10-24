@@ -1,0 +1,45 @@
+{
+  "name": "expression-migration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "node fix-style-spec && browserify --standalone MigrationTool index.js > build/bundle.js",
+    "watch": "node fix-style-spec && watchify index.js -o bundle.js --debug --standalone MigrationTool --verbose",
+    "serve": "st --no-cache build/",
+    "assets": "cp index.html build/",
+    "start": "mkdir -p build && run-p watch assets serve",
+    "build": "mkdir -p build && run-p bundle assets"
+  },
+  "browserify": {
+    "transform": [
+      "unflowify",
+      [
+        "bubleify",
+        {
+          "bubleError": true,
+          "transforms": {
+            "dangerousForOf": true
+          },
+          "objectAssign": "Object.assign"
+        }
+      ]
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "diff": "^3.4.0",
+    "json-stringify-pretty-compact": "^1.0.4",
+    "mapbox-gl": "^0.41.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "bubleify": "^0.7.0",
+    "npm-run-all": "^4.1.1",
+    "st": "^1.2.2",
+    "unflowify": "^1.0.1",
+    "watchify": "^3.9.0"
+  }
+}
