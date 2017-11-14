@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bundle": "node fix-style-spec && browserify --standalone MigrationTool index.js > bundle.js",
-    "watch": "node fix-style-spec && watchify index.js -o bundle.js --debug --standalone MigrationTool --verbose",
-    "serve": "st --no-cache build/",
+    "bundle": "node fix-style-spec && browserify --standalone MigrationTool index.js > build/bundle.js",
+    "watch": "node fix-style-spec && watchify index.js -o build/bundle.js --debug --standalone MigrationTool --verbose",
+    "serve": "st --no-cache -d build/",
     "assets": "cp index.html build/",
     "start": "mkdir -p build && run-p watch assets serve",
     "build": "mkdir -p build && run-p bundle assets"
