@@ -3,7 +3,7 @@
 const convertFunction = require('mapbox-gl/src/style-spec/function/convert');
 const {createExpression} = require('mapbox-gl/src/style-spec/expression');
 const {isFunction} = require('mapbox-gl/src/style-spec/function');
-const validate = require('mapbox-gl/src/style-spec').validate;
+const validate = require('mapbox-gl/src/style-spec/style-spec').validate;
 const spec = require('mapbox-gl/src/style-spec/reference/v8.json');
 
 const stringify = require('json-stringify-pretty-compact');
