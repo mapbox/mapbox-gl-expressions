@@ -98,22 +98,23 @@ function migrate(style) {
     const migrated = clone(style);
     migrated.layers = style.layers.map((layer) => {
         const migratedLayer = clone(layer);
+        const layerType = (layer.ref ? style.layers.find(l => l.id === layer.ref) : layer).type;
         if (layer.paint) {
-            migratedLayer.paint = migrateProperties(layer, 'paint');
+            migratedLayer.paint = migrateProperties(layer, 'paint', layerType);
         }
         if (layer.layout) {
-            migratedLayer.layout = migrateProperties(layer, 'layout');
+            migratedLayer.layout = migrateProperties(layer, 'layout', layerType);
         }
         return migratedLayer;
     })
     return migrated;
 }
 
-function migrateProperties(layer, type) {
-    const properties = clone(layer[type]);
+function migrateProperties(layer, paintOrLayout, layerType) {
+    const properties = clone(layer[paintOrLayout]);
     for (const key in properties) {
         if (isFunction(properties[key])) {
-            const propertySpec = spec[`${type}_${layer.type}`][key];
+            const propertySpec = spec[`${paintOrLayout}_${layerType}`][key];
             properties[key] = convertFunction(properties[key], propertySpec)
         }
     }
